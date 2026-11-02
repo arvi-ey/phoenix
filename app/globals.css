@@ -366,6 +366,123 @@ a[href="/TuhinRoy_Resume.pdf"] {
 .text-sm { font-size: 1rem; line-height: 1.6; }
 .tracking-widest { letter-spacing: 0.12em; }
 
+html {
+  scrollbar-color: color-mix(in oklab, var(--neon) 55%, var(--background)) var(--background);
+  scrollbar-width: thin;
+}
+
+::selection {
+  background: var(--neon);
+  color: var(--background);
+}
+
+.premium-logo {
+  text-shadow: 0 0 24px color-mix(in oklab, var(--neon) 24%, transparent);
+  transition: text-shadow 220ms ease, transform 220ms ease;
+}
+
+.premium-logo:hover {
+  text-shadow: 0 0 30px color-mix(in oklab, var(--neon) 55%, transparent);
+  transform: translateY(-1px);
+}
+
+.premium-nav-link {
+  position: relative;
+}
+
+.premium-nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.5rem;
+  left: 0;
+  height: 1px;
+  content: '';
+  background: var(--neon);
+  box-shadow: 0 0 10px var(--neon);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms ease;
+}
+
+.premium-nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.premium-control {
+  transition: border-color 220ms ease, color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.premium-control:hover {
+  border-color: color-mix(in oklab, var(--neon) 70%, transparent);
+  box-shadow: 0 0 18px color-mix(in oklab, var(--neon) 24%, transparent);
+  transform: translateY(-1px);
+}
+
+.premium-section-label {
+  color: color-mix(in oklab, var(--foreground) 70%, var(--neon));
+}
+
+.premium-section-label span:first-child {
+  box-shadow: 0 0 9px color-mix(in oklab, var(--neon) 65%, transparent);
+}
+
+.project-card,
+.neon-card {
+  position: relative;
+  background: linear-gradient(145deg, color-mix(in oklab, var(--background) 78%, transparent), color-mix(in oklab, var(--background) 92%, transparent));
+  transition: border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease, background 280ms ease;
+}
+
+.project-card::before,
+.neon-card::before {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  border-radius: inherit;
+  pointer-events: none;
+  content: '';
+}
+
+.project-card:hover,
+.neon-card:hover {
+  background: linear-gradient(145deg, color-mix(in oklab, var(--neon) 7%, var(--background)), color-mix(in oklab, var(--background) 88%, transparent));
+}
+
+.project-image::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(135deg, transparent 35%, rgba(255, 255, 255, 0.12), transparent 65%);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 200ms ease, transform 700ms ease;
+}
+
+.project-card:hover .project-image::after {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.jarvis-main > section[id] {
+  border-color: color-mix(in oklab, var(--neon) 16%, transparent);
+}
+
+.jarvis-main > section[id] > div {
+  animation: premium-rise 700ms ease-out both;
+}
+
+.jarvis-main > section[id]:nth-child(2) > div { animation-delay: 80ms; }
+.jarvis-main > section[id]:nth-child(3) > div { animation-delay: 140ms; }
+.jarvis-main > section[id]:nth-child(4) > div { animation-delay: 200ms; }
+.jarvis-main > section[id]:nth-child(5) > div { animation-delay: 260ms; }
+
+@keyframes premium-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (hover: hover) and (pointer: fine) {
   body, a, button, [role="button"] { cursor: none; }
 
