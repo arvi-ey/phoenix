@@ -48,7 +48,7 @@
 
 :root {
   color-scheme: light;
-  --background: oklch(1 0 0);
+  --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -72,8 +72,8 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
-  --neon: oklch(0.72 0.19 145);
-  --neon-secondary: oklch(0.7 0.16 205);
+  --neon: oklch(0.78 0.2 190);
+  --neon-secondary: oklch(0.72 0.19 255);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -86,7 +86,7 @@
 
 .dark {
   color-scheme: dark;
-  --background: oklch(0.145 0 0);
+  --background: #282A36;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -109,8 +109,8 @@
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --neon: oklch(0.82 0.22 145);
-  --neon-secondary: oklch(0.78 0.18 205);
+  --neon: oklch(0.86 0.2 190);
+  --neon-secondary: oklch(0.78 0.2 255);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -130,7 +130,7 @@
 @layer base {
   * { @apply border-border outline-ring/50; }
   html { scroll-behavior: auto; }
-  body { @apply bg-background text-foreground; min-width: 320px; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; background-image: radial-gradient(circle at 8% 4%, color-mix(in oklab, var(--neon) 12%, transparent), transparent 30rem), radial-gradient(circle at 92% 18%, color-mix(in oklab, var(--neon-secondary) 10%, transparent), transparent 26rem), linear-gradient(135deg, color-mix(in oklab, var(--foreground) 2%, transparent) 25%, transparent 25%, transparent 50%, color-mix(in oklab, var(--foreground) 2%, transparent) 50%, color-mix(in oklab, var(--foreground) 2%, transparent) 75%, transparent 75%); background-size: auto, auto, 6px 6px; }
+  body { @apply bg-background text-foreground; min-width: 320px; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; background-color: var(--background); }
   .font-display { font-family: 'Space Grotesk', sans-serif; }
   .font-mono { font-family: 'DM Mono', monospace; }
 }
@@ -179,6 +179,141 @@ h1, h2, h3 { text-wrap: balance; }
 
 header { box-shadow: 0 1px 0 color-mix(in oklab, var(--neon) 18%, transparent); }
 
+.jarvis-shell {
+  position: relative;
+  isolation: isolate;
+  background: var(--background);
+}
+
+.jarvis-shell::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: '';
+  opacity: 0.32;
+  background: linear-gradient(90deg, transparent 49.8%, color-mix(in oklab, var(--neon) 12%, transparent) 50%, transparent 50.2%), linear-gradient(0deg, transparent 49.8%, color-mix(in oklab, var(--neon-secondary) 10%, transparent) 50%, transparent 50.2%);
+  background-size: 7rem 7rem;
+  mask-image: radial-gradient(circle at 50% 20%, black, transparent 72%);
+}
+
+.jarvis-header {
+  border-color: color-mix(in oklab, var(--neon) 35%, transparent) !important;
+  background: color-mix(in oklab, var(--background) 78%, transparent) !important;
+  box-shadow: 0 0 28px color-mix(in oklab, var(--neon) 12%, transparent), 0 1px 0 color-mix(in oklab, var(--neon) 35%, transparent);
+}
+
+.jarvis-header > div::before {
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.65rem;
+  border-radius: 9999px;
+  background: var(--neon);
+  box-shadow: 0 0 12px var(--neon);
+  content: '';
+}
+
+.hud-grid {
+  position: absolute;
+  inset: 5rem 0 auto;
+  height: 35rem;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 68% 32%, color-mix(in oklab, var(--neon-secondary) 13%, transparent), transparent 38%), radial-gradient(ellipse at 32% 24%, color-mix(in oklab, var(--neon) 10%, transparent), transparent 30%);
+}
+
+.hud-grid::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  opacity: 0.18;
+  background: repeating-linear-gradient(0deg, transparent 0, transparent 0.3rem, color-mix(in oklab, var(--neon) 22%, transparent) 0.35rem);
+  mask-image: linear-gradient(180deg, black, transparent 75%);
+}
+
+.hud-section {
+  border-color: color-mix(in oklab, var(--neon) 18%, transparent) !important;
+}
+
+.jarvis-main > section[id]::after {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-right: 1px solid color-mix(in oklab, var(--neon) 70%, transparent);
+  border-top: 1px solid color-mix(in oklab, var(--neon) 70%, transparent);
+  content: '';
+  opacity: 0.7;
+}
+
+.neon-card {
+  border-color: color-mix(in oklab, var(--neon) 24%, transparent) !important;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--neon) 5%, transparent), 0 0 34px color-mix(in oklab, var(--neon-secondary) 7%, transparent);
+}
+
+.neon-card:hover {
+  border-color: color-mix(in oklab, var(--neon) 65%, transparent) !important;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--neon) 18%, transparent), 0 0 34px color-mix(in oklab, var(--neon) 18%, transparent);
+}
+
+.project-card {
+  overflow: hidden;
+  min-width: 0;
+  padding-inline: 1rem;
+  padding-bottom: 1.25rem;
+}
+
+.project-image {
+  isolation: isolate;
+}
+
+.project-image img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.project-title,
+.project-type {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.project-title {
+  text-wrap: pretty;
+}
+
+.project-details {
+  min-width: 0;
+  width: 100%;
+}
+
+.neon-button {
+  box-shadow: 0 0 18px color-mix(in oklab, var(--neon) 24%, transparent), 0 12px 30px -10px hsl(var(--foreground) / 0.7) !important;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 30px color-mix(in oklab, var(--neon) 48%, transparent), 0 18px 38px -12px hsl(var(--foreground) / 0.85) !important;
+}
+
+.hud-status {
+  color: var(--neon);
+  text-shadow: 0 0 12px color-mix(in oklab, var(--neon) 70%, transparent);
+}
+
+.hud-status::before {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.55rem;
+  border-radius: 9999px;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+  content: '';
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
 section[id] > div { position: relative; z-index: 1; }
 
 .hero-title { 
@@ -208,6 +343,11 @@ section[id]::before {
 @keyframes neon-breathe {
   from { filter: drop-shadow(0 0 18px color-mix(in oklab, var(--neon) 12%, transparent)); }
   to { filter: drop-shadow(0 0 34px color-mix(in oklab, var(--neon) 28%, transparent)); }
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
 }
 
 /* Keep the hero resume CTA readable at every viewport width. */
