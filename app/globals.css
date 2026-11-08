@@ -359,14 +359,15 @@ a[href="/TuhinRoy_Resume.pdf"] {
 }
 
 /* Keep supporting text readable without overpowering the main display type. */
-.text-\[10px\] { font-size: 0.75rem !important; line-height: 1.4; }
-.text-\[0\.65rem\] { font-size: 0.75rem !important; line-height: 1.4; }
-.text-\[0\.68rem\] { font-size: 0.8rem !important; line-height: 1.5; }
-.text-xs { font-size: 0.875rem; line-height: 1.5; }
-.text-sm { font-size: 1rem; line-height: 1.6; }
+.text-\[10px\] { font-size: 0.875rem !important; line-height: 1.45; }
+.text-\[0\.65rem\] { font-size: 0.875rem !important; line-height: 1.45; }
+.text-\[0\.68rem\] { font-size: 0.95rem !important; line-height: 1.5; }
+.text-xs { font-size: 1rem; line-height: 1.55; }
+.text-sm { font-size: 1.125rem; line-height: 1.6; }
 .tracking-widest { letter-spacing: 0.12em; }
 
 html {
+  font-size: 112.5%;
   scrollbar-color: color-mix(in oklab, var(--neon) 55%, var(--background)) var(--background);
   scrollbar-width: thin;
 }
